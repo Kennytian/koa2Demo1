@@ -1,6 +1,7 @@
 'use strict';
 
 const koa = require('koa');
+const router = require('koa-router')();
 const app = new koa();
 
 const port = 8089;
@@ -21,12 +22,16 @@ app.use(async(ctx, next) => {
   console.log('time:', ms);
 });
 
-app.use(async(ctx, next) => {
-  await next();
-
-  ctx.res.writeHead(200, {'Content-Type': 'text/html'});
-  ctx.res.end('<h1>Welcome to koa world!</h1>');
+router.get('/blog/:name', async(ctx, next) => {
+  var name = ctx.params.name;
+  ctx.response.body = `<h1>Hello, ${name}</h1>`;
 });
+
+router.get('/', async(ctx, next) => {
+  ctx.response.body = `<h1>Index</h1>`;
+});
+
+app.use(router.routes());
 
 app.listen(port, hostname, () => {
   console.log('server has running at ', hostname, port);
