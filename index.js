@@ -1,38 +1,42 @@
 'use strict';
 
 const koa = require('koa');
-const router = require('koa-router')();
 const app = new koa();
+//加载request 请求模块
+const bodyparse = require('koa-bodyparser');
 
-const port = 8089;
-const hostname = 'localhost';
+//加载路由模块
+const controll = require('./controll');
 
-app.use(async(ctx, next) => {
+const port = 8080;
+const hostname = '127.0.0.1';
+
+
+//app注入bodyparse中间件
+app.use(bodyparse());
+
+//日志打印
+app.use(async (ctx, next) => {
+  // ctx.request.url == ctx.url
   console.log(`${ctx.req.method} ${ctx.req.url}`);
-  await next();
+  await next() //middleWare
 });
 
-app.use(async(ctx, next) => {
-  const start = new Date().getTime();
+//时间打印
+app.use(async (ctx, next) => {
+  const start = new Date().getTime(); // bengin time
 
-  await next();
+  await next(); //调用下一个中间件 middleWare
 
-  const ms = new Date().getTime() - start;
+  const ms = new Date().getTime() - start; // use time
 
-  console.log('time:', ms);
+  console.log(`Time: ${ms}`) //print use time
 });
 
-router.get('/blog/:name', async(ctx, next) => {
-  var name = ctx.params.name;
-  ctx.response.body = `<h1>Hello, ${name}</h1>`;
-});
 
-router.get('/', async(ctx, next) => {
-  ctx.response.body = `<h1>Index</h1>`;
-});
+app.use(controll());
 
-app.use(router.routes());
 
 app.listen(port, hostname, () => {
-  console.log('server has running at ', hostname, port);
+  console.log(`server has running at http://${hostname}:${port}`);
 });
