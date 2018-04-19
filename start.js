@@ -1,5 +1,3 @@
-var register = require('babel-core/register');
-
-register({presets: ['stage-3']});
-
+require('babel-core/register');
+require('babel-polyfill');
 require('./index');

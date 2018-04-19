@@ -1,16 +1,17 @@
 'use strict';
 
-const koa = require('koa');
-const app = new koa();
+import Koa from 'koa';
+
 //加载request 请求模块
-const bodyparse = require('koa-bodyparser');
+import bodyparse from 'koa-bodyparser';
 
 //加载路由模块
-const controll = require('./controll');
+import controller from './controller';
 
-const port = 8080;
+const app = new Koa();
+
+const port = 8083;
 const hostname = '127.0.0.1';
-
 
 //app注入bodyparse中间件
 app.use(bodyparse());
@@ -33,9 +34,7 @@ app.use(async (ctx, next) => {
   console.log(`Time: ${ms}`) //print use time
 });
 
-
-app.use(controll());
-
+app.use(controller());
 
 app.listen(port, hostname, () => {
   console.log(`server has running at http://${hostname}:${port}`);

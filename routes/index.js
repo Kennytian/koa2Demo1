@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-var fn_index = async (ctx, next) => {
+const fn_index = async (ctx, next) => {
   ctx.response.body = `<h1>Index</h1>
         <form action="/signin" method="post">
             <p>Name: <input name="name" value="koa"></p>
@@ -9,9 +9,9 @@ var fn_index = async (ctx, next) => {
         </form>`;
 };
 
-var fn_signin = async (ctx, next) => {
-  var name = ctx.request.body.name || '';
-  var password = ctx.request.body.password || '';
+const fn_signin = async (ctx, next) => {
+  const name = ctx.request.body.name || '';
+  const password = ctx.request.body.password || '';
   if (name === 'koa' && password === '12345') {
     ctx.response.body = `<h1>Welcome, ${name}!</h1>`;
   } else {
