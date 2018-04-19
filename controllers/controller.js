@@ -1,7 +1,8 @@
 import fs from 'fs';
 
 function addMapping(router, mapping) {
-  for (const url in mapping) {
+  const keys = Object.keys(mapping);
+  keys.forEach((url) => {
     if (url.startsWith('GET ')) {
       const path = url.substring(4);
       router.get(path, mapping[url]);
@@ -13,7 +14,7 @@ function addMapping(router, mapping) {
     } else {
       console.log(`invalid URL: ${url}`);
     }
-  }
+  });
 }
 
 function addControllers(router) {
@@ -22,14 +23,15 @@ function addControllers(router) {
   const files = fs.readdirSync(routesPath);
   // 过滤routes中的js文件
   const jsFiles = files.filter(f => f.endsWith('.js'));
-  for (const f of jsFiles) {
+  const keys = Object.values(jsFiles);
+  keys.forEach((f) => {
     console.log(`process controller: ${f}...`);
     const mapping = require(routesPath + f);
     addMapping(router, mapping);
-  }
+  });
 }
 
-module.exports = function (dir) {
+module.exports = (dir) => {
   const newDir = dir || 'routes';
   const router = require('koa-router')();
   addControllers(router, newDir);

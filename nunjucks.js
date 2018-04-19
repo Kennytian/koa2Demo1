@@ -14,9 +14,10 @@ function createEnv(path, opts) {
     throwOnUndefined,
   });
   if (opts.filters) {
-    for (const f in opts.filters) {
+    const keys = Object.keys(opts.filters);
+    keys.forEach((f) => {
       env.addFilter(f, opts.filters[f]);
-    }
+    });
   }
   return env;
 }
@@ -25,7 +26,7 @@ const env = createEnv(`${__dirname}/views`, {
   watch: true,
   filters: {
     hex(n) {
-      return `0x${n}`, toString(16);
+      return `0x${n}`.toString(16);
     },
   },
 });
