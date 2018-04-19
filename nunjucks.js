@@ -5,8 +5,8 @@ function createEnv(path, opts) {
   const noCache = opts.noCache || false;
   const watch = opts.watch || false;
   const throwOnUndefined = opts.throwOnUndefined || false;
-  const searchPaths = `${__dirname}/views`;
-  const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(searchPaths, {
+  const viewsPaths = `${__dirname}/views`;
+  const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(viewsPaths, {
     noCache,
     watch,
   }), {
