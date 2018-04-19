@@ -1,35 +1,34 @@
-'use strict';
-
-const nunjucks = require('nunjucks');
+import nunjucks from 'nunjucks';
 
 function createEnv(path, opts) {
-  var autoescape = opts.autoescape && true;
-  var noCache = opts.noCache || false;
-  var watch = opts.watch || false;
-  var throwOnUndefined = opts.throwOnUndefined || false;
-  var env = new nunjucks.Environment(
-    new nunjucks.FileSystemLoader(__dirname + '/views',{
-      noCache : noCache,
-      watch : watch
-    }),{
-      autoescape : autoescape,
-      throwOnUndefined : throwOnUndefined
-    });
-  if(opts.filters){
-    for(var f in opts.filters) {
+  const autoEscape = opts.autoescape && true;
+  const noCache = opts.noCache || false;
+  const watch = opts.watch || false;
+  const throwOnUndefined = opts.throwOnUndefined || false;
+  const viewsPaths = `${__dirname}/views`;
+  const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(viewsPaths, {
+    noCache,
+    watch,
+  }), {
+    autoescape: autoEscape,
+    throwOnUndefined,
+  });
+  if (opts.filters) {
+    const keys = Object.keys(opts.filters);
+    keys.forEach((f) => {
       env.addFilter(f, opts.filters[f]);
-    }
+    });
   }
   return env;
 }
 
-var env = createEnv(__dirname + '/views',{
-  watch : true,
-  filters : {
-    hex : function(n){
-      return '0x' + n,toString(16);
-    }
-  }
+const env = createEnv(`${__dirname}/views`, {
+  watch: true,
+  filters: {
+    hex(n) {
+      return `0x${n}`.toString(16);
+    },
+  },
 });
 
 module.exports = env;
