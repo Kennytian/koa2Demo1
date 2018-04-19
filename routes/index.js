@@ -1,10 +1,10 @@
-'use strict';
+
 
 const fn_index = async (ctx, next) => {
   ctx.response.body = `<h1>Index</h1>
         <form action="/signin" method="post">
             <p>Name: <input name="name" value="koa"></p>
-            <p>Password: <input name="password" type="password"></p>
+            <p>Password: <input name="password" type="password" value="12345"></p>
             <p><input type="submit" value="Submit"></p>
         </form>`;
 };
@@ -21,6 +21,6 @@ const fn_signin = async (ctx, next) => {
 };
 
 module.exports = {
-  'GET /' : fn_index,
-  'POST /signin' : fn_signin
-}
+  'GET /': fn_index,
+  'POST /signin': fn_signin,
+};

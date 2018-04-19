@@ -1,14 +1,12 @@
-'use strict';
-
 import nunjucks from '../nunjucks';
 
-const fn_get = async (ctx, next) => {
-  const name = ctx.params.name;
-  const s = nunjucks.render('blog.html', { name: name });
-  console.log(s);
+const get = async (ctx) => {
+  const { name } = ctx.params;
+  const s = nunjucks.render('blog.html', { name });
+  console.log('blog.js-e:', s);
   ctx.response.body = s;
-}
+};
 
 module.exports = {
-  'GET /blog/:name' : fn_get
+  'GET /blog/:name': get,
 };
