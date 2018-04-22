@@ -18,7 +18,7 @@ const signIn = async (ctx) => {
   }
 };
 
-module.exports = {
+export default {
   'GET /': index,
   'POST /signIn': signIn,
 };

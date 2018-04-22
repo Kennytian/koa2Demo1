@@ -5,6 +5,8 @@ import bodyParse from 'koa-bodyparser';
 
 // 加载路由模块
 import controller from './controllers/controller';
+import reqLogger from './logger/reqLogger';
+import timeLogger from './logger/timeLogger';
 
 const app = new Koa();
 
@@ -15,22 +17,10 @@ const hostname = '127.0.0.1';
 app.use(bodyParse());
 
 // 日志打印
-app.use(async (ctx, next) => {
-  // ctx.request.url == ctx.url
-  console.log(`${ctx.req.method} ${ctx.req.url}`);
-  await next(); // middleWare
-});
+app.use(reqLogger());
 
 // 时间打印
-app.use(async (ctx, next) => {
-  const start = new Date().getTime(); // bengin time
-
-  await next(); // 调用下一个中间件 middleWare
-
-  const ms = new Date().getTime() - start; // use time
-
-  console.log(`Time: ${ms}`); // print use time
-});
+app.use(timeLogger());
 
 app.use(controller());
 

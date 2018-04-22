@@ -5,6 +5,6 @@ const get = async (ctx) => {
   ctx.response.body = nunjucks.render('blog.html', { name });
 };
 
-module.exports = {
+export default {
   'GET /blog/:name': get,
 };
