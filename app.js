@@ -1,4 +1,5 @@
 import Koa from 'koa';
+import session from 'koa-session';
 
 // 加载request 请求模块
 import bodyParse from 'koa-bodyparser';
@@ -9,6 +10,18 @@ import reqLogger from './logger/reqLogger';
 import timeLogger from './logger/timeLogger';
 
 const app = new Koa();
+
+app.keys = ['some secret hurr'];
+const CONFIG = {
+  key: 'koa:sess',
+  maxAge: 86400000,
+  overwrite: true,
+  httpOnly: true,
+  signed: true,
+  rolling: false,
+};
+
+app.use(session(CONFIG, app));
 
 const port = 8083;
 const hostname = '127.0.0.1';
