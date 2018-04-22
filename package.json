@@ -1,10 +1,10 @@
 {
   "name": "koa2demo1",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/nodemon index.js",
     "lint": "node_modules/.bin/eslint --ext .js ./ --fix --cache"
   },
