@@ -31,4 +31,4 @@ const env = createEnv(`${__dirname}/views`, {
   },
 });
 
-module.exports = env;
+export default env;

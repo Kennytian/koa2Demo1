@@ -31,9 +31,11 @@ function addControllers(router) {
   });
 }
 
-module.exports = (dir) => {
+const routes = (dir) => {
   const newDir = dir || 'routes';
   const router = require('koa-router')();
   addControllers(router, newDir);
   return router.routes();
 };
+
+export default routes;
