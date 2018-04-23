@@ -1,6 +1,3 @@
-import { query } from '../utils/mysql';
-import { md5 } from '../utils/crypto';
-
 const index = async (ctx) => {
   ctx.response.body = `<h1>Index-${ctx.session.realName || ''}</h1>
         <form action="/signIn" method="post">
@@ -10,23 +7,6 @@ const index = async (ctx) => {
         </form>`;
 };
 
-
-const signIn = async (ctx) => {
-  const name = ctx.request.body.name || '';
-  const password = md5(ctx.request.body.password || '');
-  const sql = `select * from admin where username = '${name}' and password = '${password}';`;
-
-  const result = await query(sql);
-  const { username, realname } = result[0];
-  if (username === 'admin' && realname === 'Kenny') {
-    ctx.session.realName = realname;
-    ctx.response.body = `<h1>Welcome, ${ctx.session.realName}!</h1><h2><a href="../blog/kenny">blog/kenny</a></h2>`;
-  } else {
-    ctx.response.body = '<h1>Login failed!</h1><p><a href="/">Try again</a></p>';
-  }
-};
-
 module.exports = {
   'GET /': index,
-  'POST /signIn': signIn,
 };

@@ -5,7 +5,7 @@ import session from 'koa-session';
 import bodyParse from 'koa-bodyparser';
 
 // 加载路由模块
-import controller from './controllers/controller';
+import controller from '../controllers/controller';
 import reqLogger from './logger/reqLogger';
 import timeLogger from './logger/timeLogger';
 
