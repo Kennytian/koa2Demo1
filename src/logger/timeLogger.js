@@ -5,7 +5,7 @@ const timeLogger = () => async (ctx, next) => {
 
   const ms = new Date().getTime() - start; // use time
 
-  console.log(`Time: ${ms}`); // print use time
+  console.log(`Use time: ${ms} ms`); // print use time
 };
 
 export default timeLogger;

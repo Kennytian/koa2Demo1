@@ -1,10 +1,7 @@
 import mysql from 'mysql';
+import { DB_CONFIG } from '../const/site';
 
-const config = {
-  host: 'localhost', user: 'root', password: 'root', database: 'firstKoa',
-};
-
-const pool = mysql.createPool(config);
+const pool = mysql.createPool(DB_CONFIG);
 
 const query = (sql, values) => new Promise((resolve, reject) => {
   pool.getConnection((err, connection) => {
@@ -12,12 +9,12 @@ const query = (sql, values) => new Promise((resolve, reject) => {
       reject(err);
     } else {
       connection.query(sql, values, (error, rows) => {
+        connection.release();
         if (error) {
           reject(error);
         } else {
           resolve(rows);
         }
-        connection.release();
       });
     }
   });
