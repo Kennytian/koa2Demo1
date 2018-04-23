@@ -2,6 +2,7 @@
   "extends": "airbnb-base",
   "rules": {
     "global-require": 1,
+    "max-len": ["error", 140],
     "import/no-extraneous-dependencies": 1,
     "import/no-dynamic-require": 1,
     "import/prefer-default-export": 1,

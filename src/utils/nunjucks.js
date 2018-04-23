@@ -1,19 +1,18 @@
-import nunjucks from 'nunjucks';
+import { Environment, FileSystemLoader } from 'nunjucks';
 import { ROOT_PATH } from '../const/site';
 
+const templatesPath = `${ROOT_PATH}/src/templates/`;
+const templatesOption = {
+  watch: true,
+  filters: {
+    hex(n) { return `0x${n}`.toString(16); },
+  },
+};
+
 function createEnv(path, opts) {
-  const viewsPaths = `${ROOT_PATH}/src/views/`;
-  const autoEscape = opts.autoescape && true;
-  const noCache = opts.noCache || false;
-  const watch = opts.watch || false;
-  const throwOnUndefined = opts.throwOnUndefined || false;
-  const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(viewsPaths, {
-    noCache,
-    watch,
-  }), {
-    autoescape: autoEscape,
-    throwOnUndefined,
-  });
+  const loaderOpts = { noCache: opts.noCache || false, watch: opts.watch || false };
+  const envOpts = { autoescape: opts.autoescape && true, throwOnUndefined: opts.throwOnUndefined || false };
+  const env = new Environment(new FileSystemLoader(path, loaderOpts), envOpts);
   if (opts.filters) {
     const keys = Object.keys(opts.filters);
     keys.forEach((f) => {
@@ -23,13 +22,4 @@ function createEnv(path, opts) {
   return env;
 }
 
-const env = createEnv(`${__dirname}/views`, {
-  watch: true,
-  filters: {
-    hex(n) {
-      return `0x${n}`.toString(16);
-    },
-  },
-});
-
-export default env;
+export default createEnv(templatesPath, templatesOption);
