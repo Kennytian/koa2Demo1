@@ -11,7 +11,7 @@ const index = async (ctx) => {
 };
 
 
-const handldesignIn = async (ctx) => {
+const signIn = async (ctx) => {
   const name = ctx.request.body.name || '';
   const password = md5(ctx.request.body.password || '');
   const sql = `select * from admin where username = '${name}' and password = '${password}';`;
@@ -30,5 +30,5 @@ const handldesignIn = async (ctx) => {
 
 module.exports = {
   'GET /': index,
-  'POST /signIn': handldesignIn,
+  'POST /signIn': signIn,
 };
