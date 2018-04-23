@@ -5,9 +5,10 @@ import session from 'koa-session';
 import bodyParse from 'koa-bodyparser';
 
 // 加载路由模块
-import controller from '../controllers/controller';
+import controller from './controllers/controller';
 import reqLogger from './logger/reqLogger';
 import timeLogger from './logger/timeLogger';
+import { HOST_NAME, PORT } from './const/site';
 
 const app = new Koa();
 
@@ -23,9 +24,6 @@ const CONFIG = {
 
 app.use(session(CONFIG, app));
 
-const port = 8083;
-const hostname = '127.0.0.1';
-
 // app注入bodyParse中间件
 app.use(bodyParse());
 
@@ -37,6 +35,6 @@ app.use(timeLogger());
 
 app.use(controller());
 
-app.listen(port, hostname, () => {
-  console.log(`server has running at http://${hostname}:${port}`);
+app.listen(PORT, HOST_NAME, () => {
+  console.log(`server has running at http://${HOST_NAME}:${PORT}`);
 });

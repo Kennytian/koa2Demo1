@@ -1,11 +1,12 @@
 import nunjucks from 'nunjucks';
+import { ROOT_PATH } from '../const/site';
 
 function createEnv(path, opts) {
+  const viewsPaths = `${ROOT_PATH}/src/views/`;
   const autoEscape = opts.autoescape && true;
   const noCache = opts.noCache || false;
   const watch = opts.watch || false;
   const throwOnUndefined = opts.throwOnUndefined || false;
-  const viewsPaths = `${__dirname}/views`;
   const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(viewsPaths, {
     noCache,
     watch,

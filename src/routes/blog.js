@@ -1,4 +1,4 @@
-import nunjucks from '../nunjucks';
+import nunjucks from '../utils/nunjucks';
 
 const get = async (ctx) => {
   const { name } = ctx.params;

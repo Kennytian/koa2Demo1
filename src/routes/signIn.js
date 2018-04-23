@@ -1,13 +1,12 @@
-import { md5 } from '../src/utils/crypto';
-import { query } from '../src/utils/mysql';
-import nunjucks from '../nunjucks';
+import md5 from 'md5';
+import { query } from '../utils/mysql';
+import nunjucks from '../utils/nunjucks';
 
 const signIn = async (ctx) => {
   const name = ctx.request.body.name || '';
   const password = md5(ctx.request.body.password || '');
-  const sql = `select * from admin where username = '${name}' and password = '${password}';`;
-
-  const result = await query(sql);
+  const sql = 'select * from admin where username = ? and password = ?;';
+  const result = await query(sql, [name, password]);
   const { username, realname } = result[0];
   if (username === 'admin' && realname === 'Kenny') {
     ctx.session.realName = realname;

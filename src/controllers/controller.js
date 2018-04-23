@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { ROOT_PATH } from '../const/site';
 
 function addMapping(router, mapping) {
   const keys = Object.keys(mapping);
@@ -19,7 +20,7 @@ function addMapping(router, mapping) {
 
 function addControllers(router) {
   // 读取routes文件目录
-  const routesPath = `${process.cwd()}/routes/`;
+  const routesPath = `${ROOT_PATH}/src/routes/`;
   const files = fs.readdirSync(routesPath);
   // 过滤routes中的js文件
   const jsFiles = files.filter(f => f.endsWith('.js'));
