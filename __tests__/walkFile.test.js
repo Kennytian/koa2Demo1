@@ -1,5 +1,5 @@
 /* eslint-disable no-undef,max-len */
-import walkFile from '../src/sql/walkFile';
+import walkFile from '../src/utils/walkFile';
 
 describe('walkFile group', () => {
   it('walkFile not.toBeNull', () => {
