@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-undef,max-len */
 import { addTodo, ADD_TODO } from './addTodo';
 
 describe('actions', () => {
