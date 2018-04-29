@@ -18,7 +18,7 @@ describe('walkFile group', () => {
 
   it('walkFile check file type .jsx', () => {
     const filePath = '/Users/kenny/projects/private/nodejs/koa2Demo1/src/logger';
-    expect(walkFile(filePath, 'jsx')).toEqual({});
+    expect(walkFile(filePath, 'jsx')).not.toHaveProperty('reqLogger.js');
   });
 
   it('walkFile check file type .json', () => {

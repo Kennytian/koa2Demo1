@@ -3,7 +3,7 @@ import getSqlMap from '../src/utils/getSqlMap';
 import { ROOT_PATH } from '../src/const/site';
 
 describe('getSqlMap group', () => {
-  it('getSqlMap not.toBeNull', () => {
+  it('getSqlMap toBeDefined', () => {
     expect(getSqlMap()).toBeDefined();
   });
 

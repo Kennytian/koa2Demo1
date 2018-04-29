@@ -6,8 +6,8 @@ describe('getSqlContent group', () => {
     expect(getSqlContent()).toBeDefined();
   });
 
-  it('getSqlContent get sql string contains', () => {
-    const isContain = Object.keys(getSqlContent()).includes('admin.sql');
-    expect(isContain).toEqual(true);
+  it('getSqlContent get sql string toMatchObject', () => {
+    const expected = { 'admin.sql': expect.stringMatching(/CREATE TABLE/) };
+    expect(getSqlContent()).toMatchObject(expected);
   });
 });
