@@ -1,7 +1,8 @@
 # koa2
 koa2 学习笔记
 
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) [![CircleCI](https://circleci.com/gh/Kennytian/koa2Demo1.svg?style=svg)](https://circleci.com/gh/Kennytian/koa2Demo1)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) 
+[![CircleCI](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg)](https://github.com/Kennytian/koa2Demo1)
 
 ## koa
     koa是Express的下一代基于Node.js的web框架，目前有1.x和2.0两个版本,2.0基于ECMA7  async await
