@@ -8,12 +8,11 @@ describe('getSqlMap group', () => {
   });
 
   it('getSqlMap get sql path', () => {
-    expect(getSqlMap()).toEqual({ 'admin.sql': '/Users/kenny/projects/private/nodejs/koa2Demo1/src/sql/admin.sql' });
+    expect(getSqlMap()).toEqual({ 'admin.sql': `${ROOT_PATH}/src/sql/admin.sql` });
   });
 
   it('getSqlMap ROOT_PATH', () => {
     expect(__dirname).toContain('/__tests__');
     expect(ROOT_PATH).not.toContain('/__tests__');
-    expect(ROOT_PATH).toBe('/Users/kenny/projects/private/nodejs/koa2Demo1');
   });
 });
