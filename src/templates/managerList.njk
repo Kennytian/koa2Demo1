@@ -1,0 +1,24 @@
+{% extends 'base.njk' %}
+
+{% block body %}
+<div>
+    <h2>你好 {{name}}</h2>
+    <h4><a href="../blog/kenny">blog/kenny</a></h4>
+    <table border="1">
+        <tr><td>ID</td><td>用户名</td><td>真实姓名</td><td>密码</td><td colspan="2" align="center">操作</td></tr>
+        {% for item in dataList %}
+            <tr>
+                <td>{{item.uid }}</td>
+                <td>{{item.username }}</td>
+                <td>{{item.realname }}</td>
+                <td>{{item.password }}</td>
+                <td><a href="{{'/managerList/edit/'+item.uid }}">修改</a></td>
+                <td><a href="{{'/managerList/del/'+item.uid }}">删除</a></td>
+            </tr>
+        {% else %}
+            <li>WTF，没数据？</li>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+

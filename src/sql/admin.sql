@@ -1,4 +1,7 @@
-CREATE TABLE admin
+CREATE SCHEMA IF NOT EXISTS firstKoa;
+USE firstKoa;
+DROP TABLE IF EXISTS admin;
+CREATE TABLE IF NOT EXISTS admin
 (
     uid int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     username varchar(50) DEFAULT '' NOT NULL COMMENT '管理员名称',
@@ -8,6 +11,15 @@ CREATE TABLE admin
     sign_count int(11) NOT NULL COMMENT '登录次数',
     sign_lastdate int(11) NOT NULL COMMENT '最后登录时间',
     isDelete int(1) DEFAULT '0' NOT NULL
-) default character set utf8;
-INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (1, 'admin', 'Kenny', '670b14728ad9902aecba32e22fa4f6bd', null, 0, 0, 0);
-INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (7, '张玲', null, '5775a0305f172894622453beddecc6ec', null, 0, 0, 0);
+) DEFAULT CHARACTER SET utf8;
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (1, 'admin', 'Kenny', 'e10adc3949ba59abbe56e057f20f883e', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (2, 'jerry', 'Jerry', '5775a0305f172894622453beddecc6ec', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (3, 'admin', 'Kenny', 'e10adc3949ba59abbe56e057f20f883e', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (4, 'jerry', 'Jerry', '5775a0305f172894622453beddecc6ec', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (5, 'admin', 'Kenny', 'e10adc3949ba59abbe56e057f20f883e', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (6, 'jerry', 'Jerry', '5775a0305f172894622453beddecc6ec', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (7, 'admin', 'Kenny', 'e10adc3949ba59abbe56e057f20f883e', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (8, 'jerry', 'Jerry', '5775a0305f172894622453beddecc6ec', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (9, 'admin', 'Kenny', 'e10adc3949ba59abbe56e057f20f883e', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (10, 'jerry', 'Jerry', '5775a0305f172894622453beddecc6ec', null, 0, 0, 0);
+INSERT INTO admin (uid, username, realname, password, role, sign_count, sign_lastdate, isDelete) VALUES (11, 'jerry', 'Jerry', '5775a0305f172894622453beddecc6ec', null, 0, 0, 0);

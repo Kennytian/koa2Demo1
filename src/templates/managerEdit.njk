@@ -1,0 +1,13 @@
+{% extends 'base.njk' %}
+
+{% block body %}
+    <div><h1>Hello {{ name }}</h1></div>
+    <form action="/managerList/{{ action }}" method="post">
+        <p>Id: <label>{{ result.uid }}</label></p>
+        <p>User Name: <input name="username" value="{{ result.username }}"></p>
+        <p>Real Name: <input name="realname" value="{{ result.realname }}"></p>
+        <p>Password: <input name="password" type="password" value=""></p>
+        <input type="hidden" name="uid" value="{{ result.uid }}" />
+        <p><input type="submit" value="Submit"></p>
+    </form>
+{% endblock %}
