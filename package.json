@@ -1,6 +1,6 @@
 {
   "name": "koa2demo1",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -16,37 +16,40 @@
   "license": "ISC",
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "koa": "^2.5.0",
-    "koa-bodyparser": "^4.2.0",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.0.1",
     "koa-session": "^5.8.1",
     "md5": "^2.2.1",
     "mysql": "^2.15.0",
-    "nunjucks": "^3.0.0"
+    "nunjucks": "^3.1.3"
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "jest": "^22.4.3",
-    "nodemon": "^1.17.3"
+    "eslint-plugin-import": "^2.12.0",
+    "jest": "^22.4.4",
+    "nodemon": "^1.17.4"
   },
   "eslintIgnore": [
-    "coverage/**/*.js",
-    "__tests__/**/*.js"
+    "/coverage/**/*.js",
+    "/__tests__/**/(*.)(spec|test).js"
   ],
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "./coverage",
     "setupFiles": [
-      "./__tests__/__config__/setup.js"
+      "./__tests__/__config__/setup.js",
+      "./__tests__/__config__/polyfills.js"
     ],
     "testMatch": [
-      "**/__tests__/**/?(*.)(spec|test).js?(x)"
+      "**/__tests__/**/?(*.)(spec|test).js?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
     ],
+    "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "./__tests__/__config__/"
