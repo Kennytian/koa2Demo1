@@ -17,3 +17,6 @@ koa2 学习笔记
     解析原始request请求，把解析后的参数，绑定到ctx.request.body中
 ## Nunjucks
     模板引擎
+
+## Redis
+一个 NOSQL 数据库，[Mac / Linux 下 Redis 安装与测试](./articles/redis.md)
