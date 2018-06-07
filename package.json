@@ -78,9 +78,9 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "validate-commit-msg",
       "pre-commit": "yarn lint",
-      "pre-push": "yarn test",
-      "commit-msg": "validate-commit-msg"
+      "pre-push": "yarn test"
     }
   }
 }
