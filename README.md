@@ -21,7 +21,7 @@ koa2 学习笔记
 ## Redis
 一个 NOSQL 数据库，[Mac / Linux 下 Redis 安装与测试](./articles/redis.md)
 
-#### Commit message 的格式
+## Commit message 的格式
 - feat：新功能（feature）
 - fix：修补bug
 - docs：文档（documentation）

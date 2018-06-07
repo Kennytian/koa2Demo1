@@ -17,7 +17,6 @@
     "test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/nodemon $NODE_DEBUG_OPTION index.js",
     "lint": "node_modules/.bin/eslint --ext .js ./ --fix --cache",
-    "precommit": "yarn lint",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
@@ -50,6 +49,12 @@
     "jest": "^23.1.0",
     "nodemon": "^1.17.5",
     "validate-commit-msg": "^2.14.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn test"
+    }
   },
   "config": {
     "commitizen": {
