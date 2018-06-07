@@ -11,7 +11,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kennytian/koa2Demo1.git"
+    "url": "git+https://github.com/Kennytian/koa2Demo1.git"
   },
   "scripts": {
     "test": "./node_modules/.bin/jest",

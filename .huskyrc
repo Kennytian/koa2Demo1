@@ -1,7 +1,6 @@
 {
   "skipCI": false,
   "hooks": {
-     "commit-msg": "validate-commit-msg",
      "pre-commit": "yarn lint",
      "pre-push": "yarn test"
   }
