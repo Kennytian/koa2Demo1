@@ -3,6 +3,6 @@ export const PORT = 8083;
 export const ROOT_PATH = process.cwd();
 
 export const DB_CONFIG = {
-  host: '127.0.0.1', user: 'root', password: 'root', database: 'firstKoa',
+  host: '127.0.0.1', user: 'root', password: null, database: 'firstKoa',
 };
 
